@@ -2,6 +2,7 @@ import React from 'react'
 import { Fa1 } from "react-icons/fa6";
 import { Fa2 } from "react-icons/fa6";
 import { Fa3 } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 import Layout from '../../Components/Layout'
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
         <div className="contenedor font-thin">
             <img src="/src/assets/fireman.jpg" className=' h-96 rounded-md object-cover w-full' alt="" />
             <div className="centrado text-2xl text-white">Bienvenido al detector de incendios</div>
-            <button className='centrado2 bg-white w-40 p-2 rounded-lg text-black'>Empezar</button>
+            <Link to="/login"  className='centrado2 bg-white w-40 p-2 rounded-lg text-black'>Empezar</Link>
         </div>
         <h1 className=' text-6xl py-16 font-bold'>Nuestros Servicios</h1>
         <h3 className=' font-thin'>Enfocados en la alerta de incendios forestales para su pronto control</h3>

@@ -7,7 +7,7 @@ export default function RegistroAlert() {
   return (
     <>
     <Layout>
-      <h1 className=' font-bold text-4xl my-10'>Registro de alertas</h1>
+      <h1 className=' font-bold text-4xl my-5'>Registro de alertas</h1>
       <SearchAlert/>
       <Table/>
     </Layout>

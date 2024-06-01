@@ -1,31 +1,44 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+// src/Components/Navbar.js
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, signOut } from 'firebase/auth';
+import appFirebase from '../../Credentials';
 
-export default function Navbar() {
+const auth = getAuth(appFirebase);
+
+const Navbar = ({ user }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/login'); 
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  };
+
   return (
-    <nav className='flex justify-between items-center fixed w-full py-4 z-10 text-sm font-thin top-0 px-20'>
-        <ul className='flex items-center gap-5'>
-            <li className=' font-bold text-lg'>
-            <NavLink 
-                to='/'>
-                    Alert
-                </NavLink>
-            </li>
-        </ul>
-        <ul className='flex items-center gap-5'>
-            <li>
-                <NavLink 
-                to='/alerta'>
-                    Alerta
-                </NavLink>
-            </li>
-            <li>
-                <NavLink 
-                to='/registro-alertas'>
-                    Registro de Alertas
-                </NavLink>
-            </li>
-        </ul>
+    <nav className="flex items-center justify-between p-6 lg:px-20" aria-label="Global">
+      <div className="flex lg:flex-1 items-center">
+        <Link to="/" className="-m-1.5 p-1.5">
+          <h1 className='font-bold'>Alert</h1>
+        </Link>
+      </div>
+      <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-6 items-center">
+        {user ? (
+          <div className="flex items-center gap-4">
+            <span className="text-sm font-semibold leading-6 text-gray-900">Hola!, {user.email}</span>
+            <button onClick={handleLogout} className="text-sm font-semibold leading-6">Logout</button>
+            <Link to="/registro-alertas" className="text-sm font-semibold leading-6">Registro</Link>
+            <Link to="/alerta" className="text-sm font-semibold leading-6">Alertas</Link>
+          </div>
+        ) : (
+          <Link to="/login" className="text-sm font-semibold leading-6 p-3 rounded-lg w-auto text-center">Login/Sign-In</Link>
+        )}
+      </div>
     </nav>
-  )
-}
+  );
+};
+
+export default Navbar;

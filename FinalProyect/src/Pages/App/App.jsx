@@ -1,31 +1,48 @@
-import { useRoutes, BrowserRouter } from 'react-router-dom'
-import Home from '../Home'
-import Alert from '../Alert'
-import RegistroAlert from '../RegistroAlert'
-import NotFounnd from '../NotFound'
-import Navbar from '../../Components/Navbar'
-import './index.css'
+// src/App.js
+import { useRoutes, BrowserRouter } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import appFirebase from '../../Credentials';
+
+import Home from '../Home';
+import Alert from '../Alert';
+import RegistroAlert from '../RegistroAlert';
+import NotFounnd from '../NotFound';
+import Login from '../Login';
+import Navbar from '../../Components/Navbar';
+import './index.css';
+
+const auth = getAuth(appFirebase);
 
 const AppRoutes = () => {
   let routes = useRoutes([
-  { path: '/', element: <Home/> },
-  { path: '/alerta', element: <Alert/> },
-  { path: '/registro-alertas', element: <RegistroAlert/> },
-  { path: '/*', element: <NotFounnd/>}
-  ])
+    { path: '/', element: <Home /> },
+    { path: '/alerta', element: <Alert /> },
+    { path: '/registro-alertas', element: <RegistroAlert /> },
+    { path: '/login', element: <Login /> },
+    { path: '/*', element: <NotFounnd /> },
+  ]);
 
-  return routes
-
-}
+  return routes;
+};
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user ? user : null);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <BrowserRouter>
-      <AppRoutes/>
-      <Navbar/>
+      <Navbar user={user} />
+      <AppRoutes />
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

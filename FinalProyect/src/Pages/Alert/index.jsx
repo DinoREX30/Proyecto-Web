@@ -6,8 +6,7 @@ import { FaFire } from "react-icons/fa";
 export default function Alert() {
   return (
     <Layout>
-      <div className='flex justify-between py-10'>
-        <h1 className='text-4xl font-bold'>Alerta</h1>
+      <div className='flex justify-between my-6'>
         <ClearButton/>
       </div>
       <h2 className='text-2xl font-bold'>Alerta activa</h2>
