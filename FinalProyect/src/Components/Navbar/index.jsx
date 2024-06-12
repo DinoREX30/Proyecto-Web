@@ -22,19 +22,25 @@ const Navbar = ({ user }) => {
     <nav className="flex items-center justify-between p-6 lg:px-20" aria-label="Global">
       <div className="flex lg:flex-1 items-center">
         <Link to="/" className="-m-1.5 p-1.5">
-          <h1 className='font-bold'>Alert</h1>
+          <h1 className='font-bold'>Alertree</h1>
         </Link>
       </div>
       <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-6 items-center">
         {user ? (
           <div className="flex items-center gap-4">
             <span className="text-sm font-semibold leading-6 text-gray-900">Hola!, {user.email}</span>
-            <button onClick={handleLogout} className="text-sm font-semibold leading-6">Logout</button>
             <Link to="/registro-alertas" className="text-sm font-semibold leading-6">Registro</Link>
             <Link to="/alerta" className="text-sm font-semibold leading-6">Alertas</Link>
+            <Link to="/funcionamiento" className="text-sm font-semibold leading-6">Funcionamiento</Link>
+            <Link to="/nosotros" className="text-sm font-semibold leading-6">Nosotros</Link>
+            <button onClick={handleLogout} className="text-sm font-semibold leading-6 bg-black text-white p-2 rounded-lg">Logout</button>
           </div>
         ) : (
-          <Link to="/login" className="text-sm font-semibold leading-6 p-3 rounded-lg w-auto text-center">Login/Sign-In</Link>
+          <div className="flex items-center gap-4">
+            <Link to="/funcionamiento" className="text-sm font-semibold leading-6">Funcionamiento</Link>
+            <Link to="/nosotros" className="text-sm font-semibold leading-6">Nosotros</Link>
+            <Link to="/login" className="text-sm font-semibold leading-6 w-auto text-center bg-black text-white p-2 rounded-lg">Login/Sign-In</Link>
+          </div>  
         )}
       </div>
     </nav>

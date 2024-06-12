@@ -7,10 +7,15 @@ import appFirebase from '../../Credentials';
 import Home from '../Home';
 import Alert from '../Alert';
 import RegistroAlert from '../RegistroAlert';
-import NotFounnd from '../NotFound';
+import NotFound from '../NotFound';
 import Login from '../Login';
 import Navbar from '../../Components/Navbar';
+import { AlertProvider } from '../../Context/AlertContext';
+import Nosotros from '../Nosotros';
+import Funcionamiento from '../Funcionamiento';
 import './index.css';
+
+
 
 const auth = getAuth(appFirebase);
 
@@ -20,7 +25,9 @@ const AppRoutes = () => {
     { path: '/alerta', element: <Alert /> },
     { path: '/registro-alertas', element: <RegistroAlert /> },
     { path: '/login', element: <Login /> },
-    { path: '/*', element: <NotFounnd /> },
+    { path: '/nosotros', element: <Nosotros /> },
+    { path: '/funcionamiento', element: <Funcionamiento /> },
+    { path: '/*', element: <NotFound /> },
   ]);
 
   return routes;
@@ -39,8 +46,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar user={user} />
-      <AppRoutes />
+      <AlertProvider>
+        <Navbar user={user} />
+        <AppRoutes />
+      </AlertProvider>
     </BrowserRouter>
   );
 }
