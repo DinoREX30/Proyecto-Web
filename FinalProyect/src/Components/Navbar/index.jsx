@@ -29,7 +29,7 @@ const Navbar = ({ user }) => {
         {user ? (
           <div className="flex items-center gap-4">
             <span className="text-sm font-semibold leading-6 text-gray-900">Hola!, {user.email}</span>
-            <Link to="/registro-alertas" className="text-sm font-semibold leading-6">Registro</Link>
+            <a href="https://circuitoarbol.000webhostapp.com/index.php" target="_blank" className='text-sm font-semibold leading-6'>Registro</a>
             <Link to="/alerta" className="text-sm font-semibold leading-6">Alertas</Link>
             <Link to="/funcionamiento" className="text-sm font-semibold leading-6">Funcionamiento</Link>
             <Link to="/nosotros" className="text-sm font-semibold leading-6">Nosotros</Link>

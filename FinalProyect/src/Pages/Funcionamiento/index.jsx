@@ -49,7 +49,7 @@ export default function Funcionamiento() {
           <ol className="list-decimal list-inside space-y-4">
             <li><strong>Detección:</strong> Nuestros dispositivos Arduino monitorean continuamente el ambiente en busca de humo.</li>
             <li><strong>Notificación:</strong> Al detectar humo, el dispositivo envía una señal a nuestra plataforma web.</li>
-            <li><strong>Registro:</strong> La plataforma registra los detalles de la alerta, incluyendo el tipo de alerta (A, B o C), la ubicación del dispositivo, la fecha y hora de la detección, y el mensaje predeterminado correspondiente.</li>
+            <li><strong>Registro:</strong> La plataforma registra los detalles de la alerta, incluyendo el tipo de alerta (A, B o C), la ubicación del dispositivo, la fecha de la detección, y el mensaje predeterminado correspondiente.</li>
             <li><strong>Acción:</strong> El sistema envía una notificación instantánea a los usuarios registrados, permitiéndoles tomar las medidas necesarias según el tipo de alerta.</li>
           </ol>
         </div>

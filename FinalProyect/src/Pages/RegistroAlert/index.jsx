@@ -3,13 +3,13 @@ import React, { useContext } from 'react';
 import { AlertContext } from "../../Context/AlertContext";
 import Layout from "../../Components/Layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFire } from "@fortawesome/free-solid-svg-icons";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 const RegistroAlertas = () => {
     const { alertas } = useContext(AlertContext);
 
     const renderFireIcon = (tipo) => {
-        return tipo === 'C' ? <FontAwesomeIcon icon={faFire} className="text-red-500" /> : null;
+        return tipo === 'B' ? <FontAwesomeIcon icon={faExclamationTriangle} className=" text-yellow-400" /> : null;
     };
 
     return (
